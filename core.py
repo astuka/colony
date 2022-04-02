@@ -16,24 +16,24 @@ while True:
     print("What would you like to do? \n 1. Roster Lookup \n 2. Proceed with a new year")
     i = input()
     if i == "1":
-        for r in roster:
-            print(r.firstname+" "+r.lastname+", a level "+str(r.level)+" "+r.clas)
+        for p in roster:
+            print(p.firstname+" "+p.lastname+", a "+p.alignment+" level "+str(p.level)+" "+p.clas+" who is "+str(p.age)+" years old.")
     elif i == "2":
         #new year default events
         #Age increase
-        for r in roster:
-            r.age += 1
+        for p in roster:
+            p.age += 1
         #Natural death chance
         for i in roster:
             if i.age < 65:
                 death_chance = 0.05
-                roll = r.random
+                roll = r.random()
                 if roll <= death_chance:
-                    print(i.firstname+" has died of natural causes.")
+                    print(i.firstname+" "+i.lastname+" has died of natural causes.")
                     roster.remove(i)
             else:
                 death_chance = 0.2
                 roll = r.random
                 if roll <= death_chance:
-                    print(i.firstname+" has died of natural causes.")
+                    print(i.firstname+" "+i.lastname+" has died of natural causes.")
                     roster.remove(i)
