@@ -2,11 +2,13 @@ import generator as g
 import events as e 
 import random as r
 
+id = 0 #tracks id of new characters
 roster = [] #list of all living characters
 
 #spawn in initial colony
 for x in range(5):
-    x = g.generation()
+    x = g.generation(id)
+    id += 1
     roster.append(x)
 
 
@@ -17,7 +19,7 @@ while True:
     i = input()
     if i == "1":
         for p in roster:
-            print(p.firstname+" "+p.lastname+", a "+p.alignment+" level "+str(p.level)+" "+p.clas+" who is "+str(p.age)+" years old.")
+            print(str(p.id) +" "+p.firstname+" "+p.lastname+", a "+p.alignment+" level "+str(p.level)+" "+p.clas+" who is "+str(p.age)+" years old.")
     elif i == "2":
         #new year default events
         #Age increase

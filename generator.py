@@ -1,4 +1,3 @@
-#makes a new character
 import random as r 
 
 #possible attributes
@@ -9,8 +8,10 @@ lastnames = ["Whitebottom", "Ferriss", "Johnson"]
 classes = ["Fighter", "Mage", "Ranger", "Merchant", "Politician" ]
 alignments = ["Good", "Neutral", "Evil"]
 
+#class construction
 class Character:
-  def __init__(self, gender, firstname, lastname, age, level, clas, alignment):
+  def __init__(self, id, gender, firstname, lastname, age, level, clas, alignment):
+    self.id = id
     self.gender = gender
     self.firstname = firstname
     self.lastname = lastname
@@ -20,8 +21,7 @@ class Character:
     self.alignment = alignment
 
 #generation
-
-def generation():
+def generation(id):
     #choose gender
     chose_gender = gender[r.randrange(0,2)]
 
@@ -43,5 +43,5 @@ def generation():
     #choose alignment
     choose_alignment = alignments[r.randrange(0,3)]
     
-    generated = Character(chose_gender,chose_first,chose_last,chose_age, 1, choose_class, choose_alignment)
+    generated = Character(id, chose_gender,chose_first,chose_last,chose_age, 1, choose_class, choose_alignment)
     return generated
