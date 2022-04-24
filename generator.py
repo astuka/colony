@@ -10,7 +10,7 @@ alignments = ["Good", "Neutral", "Evil"]
 
 #class construction
 class Character:
-  def __init__(self, id, gender, firstname, lastname, age, level, clas, alignment):
+  def __init__(self, id, gender, firstname, lastname, age, level, clas, alignment, relationships):
     self.id = id
     self.gender = gender
     self.firstname = firstname
@@ -19,6 +19,7 @@ class Character:
     self.level = level
     self.clas = clas
     self.alignment = alignment
+    self.relationships = relationships
 
 #generation
 def generation(id):
@@ -43,5 +44,5 @@ def generation(id):
     #choose alignment
     choose_alignment = alignments[r.randrange(0,3)]
     
-    generated = Character(id, chose_gender,chose_first,chose_last,chose_age, 1, choose_class, choose_alignment)
+    generated = Character(id, chose_gender,chose_first,chose_last,chose_age, 1, choose_class, choose_alignment, {})
     return generated

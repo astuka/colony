@@ -39,3 +39,6 @@ while True:
                 if roll <= death_chance:
                     print(i.firstname+" "+i.lastname+" has died of natural causes.")
                     roster.remove(i)
+        #Event loop
+        for x in range(5):
+            e.run_event(roster)
