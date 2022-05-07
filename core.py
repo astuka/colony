@@ -19,13 +19,13 @@ def run_event(roster):
         for x in roster:
             if x.clas == "Lumberjack":
                 resources["Wood"] += 1
-                #GIVE XP TO PERSON
+                x.exp += 10
                 print(x.firstname+" "+x.lastname+" has chopped some wood.")
     if seed in range(26,75):
         for x in roster:
             if x.clas == "Miner":
                 resources["Stone"] += 1
-                #GIVE XP TO PERSON
+                x.exp += 10
                 print(x.firstname+" "+x.lastname+" has mined some stone.")                     
     if seed in range(76,99):
         print("This is a test result to see if the function is working.")
@@ -45,6 +45,10 @@ for x in range(5):
 
 #gameplay loop
 while True:
+    print("Number of colonists:"+" "+str(len(roster)))
+    print("Wood:"+" "+str(resources["Wood"]))
+    print("Stone:"+" "+str(resources["Stone"]))
+    print("Iron:"+" "+str(resources["Wood"]))
     print("What would you like to do? \n 1. Roster Lookup \n 2. Proceed with a new year")
     i = input()
     if i == "1":
@@ -72,3 +76,8 @@ while True:
         #Event loop
         for x in range(5):
             run_event(roster)
+        #level up check
+        for y in roster:
+            if y.exp >= y.exp_max:
+                y.level += 1
+                print(y.firstname+" "+y.lastname+" has leveled up!")

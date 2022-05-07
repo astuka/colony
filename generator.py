@@ -2,9 +2,9 @@ import random as r
 
 #possible attributes
 gender = ["Male", "Female"]
-m_firstnames = ["George", "John", "Davis"]
-f_firstnames = ["Marie", "Susie", "Sarah"]
-lastnames = ["Whitebottom", "Ferriss", "Johnson"]
+m_firstnames = ["George", "John", "Davis", "Liam", "Noah", "Oliver", "Elijah", "William", "James", "Benjamin", "Lucas", "Henry", "Alexander", "Mason", "Michael", "Ethan", "Daniel", "Jacob", "Logan", "Levi", "Sebastian", "Mateo", "Jack", "Owen", "Theodore"]
+f_firstnames = ["Marie", "Susie", "Sarah", "Olivia", "Emma", "Charlotte", "Amelia", "Ava", "Sophia", "Isabella", "Mia", "Evelyn", "Harper", "Luna", "Camila", "Gianna", "Elizabeth", "Eleanor", "Ella", "Abigail", "Sofia", "Avery", "Scarlett", "Emily", "Aria"]
+lastnames = ["Whitebottom", "Ferriss", "Johnson", "Smith", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee"]
 classes = ["Fighter", "Crafter", "Lumberjack", "Miner", "Blacksmith", "Politician" ]
 alignments = ["Good", "Neutral", "Evil"]
 
@@ -30,12 +30,12 @@ def generation(id):
 
     #choose first name, based on gender
     if chose_gender == "Male":
-        chose_first = m_firstnames[r.randrange(0,3)]
+        chose_first = m_firstnames[r.randrange(0,24)]
     else:
-        chose_first = f_firstnames[r.randrange(0,3)]
+        chose_first = f_firstnames[r.randrange(0,24)]
 
     #choose last name
-    chose_last = lastnames[r.randrange(0,3)]
+    chose_last = lastnames[r.randrange(0,22)]
 
     #age is random for now, but later will change for birth events
     chose_age = r.randrange(0,40)
