@@ -28,7 +28,12 @@ def run_event(roster):
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has mined some stone.")                     
     if seed in range(76,99):
-        print("This is a test result to see if the function is working.")
+        for x in roster:
+            if x.clas == "Blacksmith" and resources["Stone"] > 0:
+                resources["Stone"] = resources["Stone"] - 1
+                resources["Bronze"] += 1
+                x.exp += 10
+                print(x.firstname+" "+x.lastname+" has smelted stone into bronze!") #yes thats not how that works who cares
 
 
 
