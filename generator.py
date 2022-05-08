@@ -10,13 +10,15 @@ alignments = ["Good", "Neutral", "Evil"]
 
 #class construction
 class Character:
-  def __init__(self, id, gender, firstname, lastname, age, level, exp, exp_max, clas, alignment, skills):
+  def __init__(self, id, gender, firstname, lastname, age, level, health, health_max, exp, exp_max, clas, alignment, skills):
     self.id = id
     self.gender = gender
     self.firstname = firstname
     self.lastname = lastname
     self.age = age
     self.level = level
+    self.health = health
+    self.health_max = health_max
     self.exp = exp
     self.exp_max = exp_max
     self.clas = clas
@@ -30,18 +32,18 @@ def generation(id):
 
     #choose first name, based on gender
     if chose_gender == "Male":
-        chose_first = m_firstnames[r.randrange(0,24)]
+        chose_first = m_firstnames[r.randrange(0,len(m_firstnames))]
     else:
-        chose_first = f_firstnames[r.randrange(0,24)]
+        chose_first = f_firstnames[r.randrange(0,len(f_firstnames))]
 
     #choose last name
-    chose_last = lastnames[r.randrange(0,22)]
+    chose_last = lastnames[r.randrange(0,len(lastnames))]
 
     #age is random for now, but later will change for birth events
     chose_age = r.randrange(0,40)
 
     #choose class
-    choose_class = classes[r.randrange(0,5)]
+    choose_class = classes[r.randrange(0,len(classes))]
 
     #skillset based on class
     if choose_class == "Fighter":
@@ -101,5 +103,81 @@ def generation(id):
     #choose alignment
     choose_alignment = alignments[r.randrange(0,3)]
     
-    generated = Character(id, chose_gender,chose_first,chose_last,chose_age, 1, 0, 100, choose_class, choose_alignment, choose_skills)
+    generated = Character(id, chose_gender,chose_first,chose_last,chose_age, 1, 100, 100, 0, 100, choose_class, choose_alignment, choose_skills)
+    return generated
+
+
+#birthevent
+def birth(id, lastn):
+    #choose gender
+    chose_gender = gender[r.randrange(0,2)]
+
+    #choose first name, based on gender
+    if chose_gender == "Male":
+        chose_first = m_firstnames[r.randrange(0,len(m_firstnames))]
+    else:
+        chose_first = f_firstnames[r.randrange(0,len(f_firstnames))]
+
+    #choose class
+    choose_class = classes[r.randrange(0,len(classes))]
+
+    #skillset based on class
+    if choose_class == "Fighter":
+        choose_skills = {
+            "Melee": 2,
+            "Crafting": 0, 
+            "Forestry": 0,
+            "Mining": 0,
+            "Smithing": 1, 
+            "Charisma": 0
+        }
+    elif choose_class == "Crafter":
+        choose_skills = {
+            "Melee": 0,
+            "Crafting": 2, 
+            "Forestry": 0,
+            "Mining": 0,
+            "Smithing": 0, 
+            "Charisma": 1
+        }
+    elif choose_class == "Lumberjack":
+        choose_skills = {
+            "Melee": 1,
+            "Crafting": 0, 
+            "Forestry": 2,
+            "Mining": 0,
+            "Smithing": 0, 
+            "Charisma": 0
+        }
+    elif choose_class == "Miner":
+        choose_skills = {
+            "Melee": 0,
+            "Crafting": 0, 
+            "Forestry": 0,
+            "Mining": 2,
+            "Smithing": 1, 
+            "Charisma": 0
+        }
+    elif choose_class == "Blacksmith":
+        choose_skills = {
+            "Melee": 0,
+            "Crafting": 0, 
+            "Forestry": 0,
+            "Mining": 1,
+            "Smithing": 2, 
+            "Charisma": 0
+        }
+    elif choose_class == "Politician":
+        choose_skills = {
+            "Melee": 0,
+            "Crafting": 1, 
+            "Forestry": 0,
+            "Mining": 0,
+            "Smithing": 0, 
+            "Charisma": 2
+        }
+    #choose alignment
+    choose_alignment = alignments[r.randrange(0,3)]
+    
+    generated = Character(id, chose_gender,chose_first,lastn,0, 1, 100, 100, 0, 100, choose_class, choose_alignment, choose_skills)
     return generated
