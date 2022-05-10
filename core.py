@@ -9,6 +9,12 @@ resources = { #initialize colony resources
     "Bronze": 0
 }
 
+colony = { #initialize colony buildings
+    "Houses": 0, #increases pop cap
+    "Fire Pits": 0, #allows for cooking/increases skill level of cooking
+    "Mines": 0, #increases skill of mining
+}
+
 
 #event logic
 def run_event(roster):
@@ -83,9 +89,14 @@ year = 1
 while True: 
     print("Year: "+str(year))
     print("Number of colonists:"+" "+str(len(roster)))
+    print("~RESOURCES~")
     print("Wood:"+" "+str(resources["Wood"]))
     print("Stone:"+" "+str(resources["Stone"]))
     print("Bronze:"+" "+str(resources["Bronze"]))
+    print("~BUILDINGS~")
+    print("Houses: "+str(colony["Houses"]))
+    print("Fire Pits: "+str(colony["Fire Pits"]))
+    print("Mines: "+str(colony["Mines"]))
     print("What would you like to do? \n 1. Roster Lookup \n 2. Proceed with a new year")
     i = input()
     if i == "1":
