@@ -41,7 +41,9 @@ def run_event(roster):
         person1 = roster[r.randrange(0,len(roster))]
         person2 = roster[r.randrange(0,len(roster))]
         if person1 != person2 and person1.gender != person2.gender:
+            global id
             baby = g.birth(id, person1.lastname)
+            id += 1
             roster.append(baby)
             print(person1.firstname+" "+person1.lastname+" has had a child with "+person2.firstname+" "+person2.lastname+" named "+baby.firstname+" "+baby.lastname+"!")
     #two colonists get in a fight
@@ -76,9 +78,10 @@ for x in range(5):
 
 
 
-
+year = 1
 #gameplay loop
-while True:
+while True: 
+    print("Year: "+str(year))
     print("Number of colonists:"+" "+str(len(roster)))
     print("Wood:"+" "+str(resources["Wood"]))
     print("Stone:"+" "+str(resources["Stone"]))
@@ -88,6 +91,15 @@ while True:
     if i == "1":
         for p in roster:
             print(str(p.id) +" "+p.firstname+" "+p.lastname+", a "+p.alignment+" level "+str(p.level)+" "+p.clas+" who is "+str(p.age)+" years old.")
+        print("Type the ID of the colonist for an expanded view, otherwise type anything else.")
+        i = input()
+        for x in roster:
+            if i == str(x.id):
+                print(x.firstname+" "+x.lastname+", a "+str(x.age)+" year old "+x.alignment+" "+x.clas)
+                print("Level "+str(x.level)+", "+str(x.exp)+"/"+str(x.exp_max))
+                print("Health "+str(x.health)+"/"+str(x.health_max))
+                print("Skills:\nMelee: "+str(x.skills["Melee"])+"\nCrafting: "+str(x.skills["Crafting"])+"\nForestry: "+str(x.skills["Forestry"])+"\nMining: "+str(x.skills["Mining"])+"\nSmithing: "+str(x.skills["Smithing"])+"\nCharisma: "+str(x.skills["Charisma"])+"\n")
+
     elif i == "2":
         #new year default events
         #Age increase
@@ -116,14 +128,112 @@ while True:
                 #implement new level
                 y.level += 1
                 y.exp = y.exp - y.exp_max
-                y.exp_max = y.exp_max * 1.05
+                y.exp_max += 10
                 #get new health
-                y.health_max = y.health_max * 1.05
+                y.health_max += 10
                 y.health = y.health_max
                 #insert class logic here
+                if y.clas == "Fighter":
+                   y.skills["Melee"] += 1
+                   roll = r.randrange(0,5) 
+                   if roll == 0:
+                       y.skills["Melee"] += 1
+                   elif roll == 1:
+                       y.skills["Crafting"] += 1
+                   elif roll == 2:
+                       y.skills["Forestry"] += 1
+                   elif roll == 3:
+                       y.skills["Mining"] += 1
+                   elif roll == 4:
+                       y.skills["Smithing"] += 1
+                   else:
+                       y.skills["Charisma"] += 1
+
+
+                elif y.clas == "Crafter":
+                    y.skills["Crafting"] += 1
+                    roll = r.randrange(0,5) 
+                    if roll == 0:
+                        y.skills["Melee"] += 1
+                    elif roll == 1:
+                        y.skills["Crafting"] += 1
+                    elif roll == 2:
+                        y.skills["Forestry"] += 1
+                    elif roll == 3:
+                        y.skills["Mining"] += 1
+                    elif roll == 4:
+                        y.skills["Smithing"] += 1
+                    else:
+                        y.skills["Charisma"] += 1
+
+                elif y.clas == "Lumberjack":
+                    y.skills["Forestry"] += 1
+                    roll = r.randrange(0,5) 
+                    if roll == 0:
+                        y.skills["Melee"] += 1
+                    elif roll == 1:
+                        y.skills["Crafting"] += 1
+                    elif roll == 2:
+                        y.skills["Forestry"] += 1
+                    elif roll == 3:
+                        y.skills["Mining"] += 1
+                    elif roll == 4:
+                        y.skills["Smithing"] += 1
+                    else:
+                        y.skills["Charisma"] += 1
+
+                elif y.clas == "Miner":
+                    y.skills["Mining"] += 1
+                    roll = r.randrange(0,5) 
+                    if roll == 0:
+                        y.skills["Melee"] += 1
+                    elif roll == 1:
+                        y.skills["Crafting"] += 1
+                    elif roll == 2:
+                        y.skills["Forestry"] += 1
+                    elif roll == 3:
+                        y.skills["Mining"] += 1
+                    elif roll == 4:
+                        y.skills["Smithing"] += 1
+                    else:
+                        y.skills["Charisma"] += 1
+
+                elif y.clas == "Blacksmith":
+                    y.skills["Smithing"] += 1
+                    roll = r.randrange(0,5) 
+                    if roll == 0:
+                        y.skills["Melee"] += 1
+                    elif roll == 1:
+                        y.skills["Crafting"] += 1
+                    elif roll == 2:
+                        y.skills["Forestry"] += 1
+                    elif roll == 3:
+                        y.skills["Mining"] += 1
+                    elif roll == 4:
+                        y.skills["Smithing"] += 1
+                    else:
+                        y.skills["Charisma"] += 1
+
+                elif y.clas == "Politician":
+                    y.skills["Charisma"] += 1
+                    roll = r.randrange(0,5) 
+                    if roll == 0:
+                        y.skills["Melee"] += 1
+                    elif roll == 1:
+                        y.skills["Crafting"] += 1
+                    elif roll == 2:
+                        y.skills["Forestry"] += 1
+                    elif roll == 3:
+                        y.skills["Mining"] += 1
+                    elif roll == 4:
+                        y.skills["Smithing"] += 1
+                    else:
+                        y.skills["Charisma"] += 1
+
                 print(y.firstname+" "+y.lastname+" has leveled up!")
         #health check
         for y in roster:
             if y.health <= 0:
                 print(y.firstname+" "+y.lastname+" has died!")
                 roster.remove(y)
+        year += 1
