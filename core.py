@@ -73,6 +73,29 @@ def run_event(roster):
                 print(person1.firstname+" "+person1.lastname+" got in a fight with "+person2.firstname+" "+person2.lastname+". The fight resulted in a tie.")
 
 
+def run_crafting(roster):
+    #obtain crafter
+    crafter = roster[r.randrange(0,len(roster))]
+    #generate seed
+    seed = r.randrange(0,2)
+    #fire pit check
+    if seed == 0:
+        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 2:
+            resources["Wood"] = resources["Wood"] - 2
+            colony["Fire Pits"] = colony["Fire Pits"] + 1
+            print(crafter.firstname+" "+crafter.lastname+" has built a fire pit!")
+    #house check
+    elif seed == 1:
+        if crafter.skills["Crafting"] >= 2 and resources["Wood"] >= 10:
+            resources["Wood"] = resources["Wood"] - 10
+            colony["Houses"] = colony["Houses"] + 1
+            print(crafter.firstname+" "+crafter.lastname+" has built a house!")
+    #mine check
+    else:
+        if crafter.skills["Crafting"] >= 1 and resources["Stone"] >= 5: #crafter.skills["Mining"] >= 1 and 
+            resources["Stone"] = resources["Stone"] - 5
+            colony["Mines"] = colony["Mines"] + 1
+            print(crafter.firstname+" "+crafter.lastname+" has built a mine!")
 
 
 #spawn in initial colony
@@ -113,9 +136,11 @@ while True:
 
     elif i == "2":
         #new year default events
+
         #Age increase
         for p in roster:
             p.age += 1
+
         #Natural death chance
         for i in roster:
             if i.age < 65:
@@ -130,9 +155,15 @@ while True:
                 if roll <= death_chance:
                     print(i.firstname+" "+i.lastname+" has died of natural causes.")
                     roster.remove(i)
+
         #Event loop
         for x in range(5):
             run_event(roster)
+
+        #Crafting loop
+        for x in range(5):
+            run_crafting(roster)    
+
         #level up check
         for y in roster:
             if y.exp >= y.exp_max:
