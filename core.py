@@ -77,10 +77,10 @@ def run_crafting(roster):
     #obtain crafter
     crafter = roster[r.randrange(0,len(roster))]
     #generate seed
-    seed = r.randrange(0,2)
+    seed = r.randrange(0,3)
     #fire pit check
     if seed == 0:
-        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 2:
+        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 2 and colony["Fire Pits"] < 5:
             resources["Wood"] = resources["Wood"] - 2
             colony["Fire Pits"] = colony["Fire Pits"] + 1
             print(crafter.firstname+" "+crafter.lastname+" has built a fire pit!")
@@ -108,8 +108,9 @@ for x in range(5):
 
 
 year = 1
+game_status = True
 #gameplay loop
-while True: 
+while game_status: 
     print("Year: "+str(year))
     print("Number of colonists:"+" "+str(len(roster)))
     print("~RESOURCES~")
@@ -151,11 +152,17 @@ while True:
                     roster.remove(i)
             else:
                 death_chance = 0.2
-                roll = r.random
+                roll = r.random()
                 if roll <= death_chance:
                     print(i.firstname+" "+i.lastname+" has died of natural causes.")
                     roster.remove(i)
-
+        
+        #first game over check
+        if len(roster) == 0:
+            print("Game over! Your colony has ended.")
+            i = input("Press anything to end the game.")
+            game_status = False
+        
         #Event loop
         for x in range(5):
             run_event(roster)
@@ -278,4 +285,11 @@ while True:
             if y.health <= 0:
                 print(y.firstname+" "+y.lastname+" has died!")
                 roster.remove(y)
+        
+        #second game over check
+        if len(roster) == 0:
+            print("Game over! Your colony has ended.")
+            i = input("Press anything to end the game.")
+            game_status = False
+
         year += 1
