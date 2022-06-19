@@ -238,7 +238,23 @@ while game_status:
 
         #Crafting loop
         for x in range(5):
-            run_crafting(roster)    
+            run_crafting(roster)
+
+        #hunger mechanic
+        if resources["Raw Food"] >= len(roster) or resources["Cooked Food"] >= len(roster):
+            if resources["Raw Food"] >= len(roster):
+                resources["Raw Food"] -= len(roster)
+                for x in roster:
+                    x.health -= 10
+            else:
+                resources["Cooked Food"] -= len(roster)
+        else:
+            death_chance = 0.2
+            roll = r.random()
+            if roll <= death_chance:
+                    starved = roster[r.randrange(0,len(roster))]
+                    print(starved.firstname+" "+starved.lastname+" has starved to death!")
+                    roster.remove(starved)
 
         #level up check
         for y in roster:
