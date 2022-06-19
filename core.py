@@ -28,7 +28,7 @@ def run_event(roster):
     #Check skill level, get wood
     if seed == 0:
         for x in roster:
-            if x.skills["Forestry"] >= 2:
+            if x.skills["Forestry"] >= 2 and x.age >= 10:
                 resources["Wood"] += 1 * (1+colony["Lumber Camps"])
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has chopped some wood.")
@@ -36,7 +36,7 @@ def run_event(roster):
     #Check skill level, get stone
     if seed == 1:
         for x in roster:
-            if x.skills["Mining"] >= 2:
+            if x.skills["Mining"] >= 2 and x.age >= 10:
                 resources["Stone"] += 1 * (1+colony["Mines"])
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has mined some stone.")
@@ -44,7 +44,7 @@ def run_event(roster):
     #Check skill level, smith Bronze                     
     if seed == 2:
         for x in roster:
-            if x.skills["Smithing"] >= 2 and resources["Stone"] > 0:
+            if x.skills["Smithing"] >= 2 and resources["Stone"] > 0 and x.age >= 10:
                 resources["Stone"] = resources["Stone"] - 1
                 resources["Bronze"] += 1 * (1+colony["Forges"])
                 x.exp += 10
@@ -54,7 +54,7 @@ def run_event(roster):
     if seed == 3:
         person1 = roster[r.randrange(0,len(roster))]
         person2 = roster[r.randrange(0,len(roster))]
-        if person1 != person2 and person1.gender != person2.gender:
+        if person1 != person2 and person1.gender != person2.gender and person1.age >= 10 and person2.age >= 10:
             global id
             baby = g.birth(id, person1.lastname)
             id += 1
@@ -83,14 +83,14 @@ def run_event(roster):
     #check skill level, get food
     if seed == 5:
         for x in roster:
-            if x.skills["Hunting"] >= 1:
+            if x.skills["Hunting"] >= 1 and x.age >= 10:
                 resources["Raw Food"] += 1
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has hunted for some food.")
     #check skill level, cook food
     if seed == 6:
         for x in roster:
-            if x.skills["Cooking"] >= 1 and resources["Raw Food"] >= 1:
+            if x.skills["Cooking"] >= 1 and resources["Raw Food"] >= 1 and x.age >= 10:
                 resources["Raw Food"] -= 1
                 resources["Cooked Food"] += 1 * (1+colony["Fire Pits"])
                 x.exp += 10
@@ -104,28 +104,28 @@ def run_crafting(roster):
     
     #fire pit check
     if seed == 0:
-        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 2 and colony["Fire Pits"] < 5:
+        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 2 and colony["Fire Pits"] < 5 and crafter.age >= 10:
             resources["Wood"] = resources["Wood"] - 2
             colony["Fire Pits"] = colony["Fire Pits"] + 1
             print(crafter.firstname+" "+crafter.lastname+" has built a fire pit!")
     
     #house check
     elif seed == 1:
-        if crafter.skills["Crafting"] >= 2 and resources["Wood"] >= 10 and colony["Houses"] < 5:
+        if crafter.skills["Crafting"] >= 2 and resources["Wood"] >= 10 and colony["Houses"] < 5 and crafter.age >= 10:
             resources["Wood"] = resources["Wood"] - 10
             colony["Houses"] = colony["Houses"] + 1
             print(crafter.firstname+" "+crafter.lastname+" has built a house!")
     
     #lumber camp check
     elif seed == 2:
-        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 5 and colony["Lumber Camps"] < 5:
+        if crafter.skills["Crafting"] >= 1 and resources["Wood"] >= 5 and colony["Lumber Camps"] < 5 and crafter.age >= 10:
             resources["Wood"] = resources["Wood"] - 5
             colony["Lumber Camps"] = colony["Lumber Camps"] + 1
             print(crafter.firstname+" "+crafter.lastname+" has built a lumber camp!")
     
     #forge check
     elif seed == 3:
-        if crafter.skills["Crafting"] >= 3 and resources["Stone"] >= 10 and resources["Bronze"] >= 2 and colony["Forges"] < 5:
+        if crafter.skills["Crafting"] >= 3 and resources["Stone"] >= 10 and resources["Bronze"] >= 2 and colony["Forges"] < 5 and crafter.age >= 10:
             resources["Stone"] = resources["Stone"] - 10
             resources["Bronze"] = resources["Bronze"] - 2
             colony["Forges"] = colony["Forges"] + 1
@@ -133,7 +133,7 @@ def run_crafting(roster):
     
     #mine check
     else:
-        if crafter.skills["Crafting"] >= 1 and resources["Stone"] >= 5 and colony["Mines"] < 5: #crafter.skills["Mining"] >= 1 and 
+        if crafter.skills["Crafting"] >= 1 and resources["Stone"] >= 5 and colony["Mines"] < 5 and crafter.age >= 10:
             resources["Stone"] = resources["Stone"] - 5
             colony["Mines"] = colony["Mines"] + 1
             print(crafter.firstname+" "+crafter.lastname+" has built a mine!")

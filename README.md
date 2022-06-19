@@ -2,9 +2,7 @@
 Simple terminal simulation game that simulates a fantasy colony
 
 # TODO
-Make it so that colonists under 10 cannot do any tasks\
 add money feature/store function in colony\
-make housing feature give pop cap\
 hunger mechanic
 
 # Event ideas
