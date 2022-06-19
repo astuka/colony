@@ -9,8 +9,7 @@ leader update: one person assigned to be 'leader' at a time, for now given how h
 
 # Event ideas
 goblin raid\
-evil alignment character causes betrayal\
-new colonist comes in
+evil alignment character causes betrayal
 
 # Bugs
 Find better way of handing dict logic in level ups\

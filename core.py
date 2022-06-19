@@ -23,8 +23,8 @@ colony = { #initialize colony buildings
 #event logic
 def run_event(roster):
     #runs a set number of random events from the list
-    seed = r.randrange(0,8)
-    
+    seed = r.randrange(0,9)
+    global id
     #Check skill level, get wood
     if seed == 0:
         for x in roster:
@@ -55,7 +55,6 @@ def run_event(roster):
         person1 = roster[r.randrange(0,len(roster))]
         person2 = roster[r.randrange(0,len(roster))]
         if person1 != person2 and person1.gender != person2.gender and person1.age >= 10 and person2.age >= 10:
-            global id
             baby = g.birth(id, person1.lastname)
             id += 1
             roster.append(baby)
@@ -95,6 +94,7 @@ def run_event(roster):
                 resources["Cooked Food"] += 1 * (1+colony["Fire Pits"])
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has cooked some food.")
+    #building burns down
     if seed == 7:
         if colony["Fire Pits"] >= 1:
             colony["Fire Pits"] -= 1
@@ -111,6 +111,13 @@ def run_event(roster):
         elif colony["Lumber Camps"] >= 1:
             colony["Lumber Camps"] -= 1
             print("A lumber camp has burned down!")
+    #new person arrives
+    if seed == 8:
+        visitor = g.generation(id)
+        id += 1
+        roster.append(visitor)
+        print("A new colonist has arrived named "+visitor.firstname+" "+visitor.lastname+"!")
+
 
 
 def run_crafting(roster):
