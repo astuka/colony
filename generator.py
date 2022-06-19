@@ -53,7 +53,9 @@ def generation(id):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 1, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 1
         }
     elif choose_class == "Crafter":
         choose_skills = {
@@ -62,7 +64,9 @@ def generation(id):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 1
+            "Charisma": 1,
+            "Cooking": 1,
+            "Hunting": 0
         }
     elif choose_class == "Lumberjack":
         choose_skills = {
@@ -71,7 +75,9 @@ def generation(id):
             "Forestry": 2,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Miner":
         choose_skills = {
@@ -80,7 +86,9 @@ def generation(id):
             "Forestry": 0,
             "Mining": 2,
             "Smithing": 1, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Blacksmith":
         choose_skills = {
@@ -89,7 +97,9 @@ def generation(id):
             "Forestry": 0,
             "Mining": 1,
             "Smithing": 2, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Politician":
         choose_skills = {
@@ -98,7 +108,9 @@ def generation(id):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 2
+            "Charisma": 2,
+            "Cooking": 0,
+            "Hunting": 0
         }
     #choose alignment
     choose_alignment = alignments[r.randrange(0,3)]
@@ -129,7 +141,9 @@ def birth(id, lastn):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 1, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 1
         }
     elif choose_class == "Crafter":
         choose_skills = {
@@ -138,7 +152,9 @@ def birth(id, lastn):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 1
+            "Charisma": 1,
+            "Cooking": 1,
+            "Hunting": 0
         }
     elif choose_class == "Lumberjack":
         choose_skills = {
@@ -147,7 +163,9 @@ def birth(id, lastn):
             "Forestry": 2,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Miner":
         choose_skills = {
@@ -156,7 +174,9 @@ def birth(id, lastn):
             "Forestry": 0,
             "Mining": 2,
             "Smithing": 1, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Blacksmith":
         choose_skills = {
@@ -165,7 +185,9 @@ def birth(id, lastn):
             "Forestry": 0,
             "Mining": 1,
             "Smithing": 2, 
-            "Charisma": 0
+            "Charisma": 0,
+            "Cooking": 0,
+            "Hunting": 0
         }
     elif choose_class == "Politician":
         choose_skills = {
@@ -174,7 +196,9 @@ def birth(id, lastn):
             "Forestry": 0,
             "Mining": 0,
             "Smithing": 0, 
-            "Charisma": 2
+            "Charisma": 2,
+            "Cooking": 0,
+            "Hunting": 0
         }
     #choose alignment
     choose_alignment = alignments[r.randrange(0,3)]

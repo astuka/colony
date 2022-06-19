@@ -3,9 +3,9 @@ Simple terminal simulation game that simulates a fantasy colony
 
 # TODO
 Make it so that colonists under 10 cannot do any tasks\
-add cooking/hunting as traits, firepit bonus for cooking\
 add money feature/store function in colony\
-make housing feature give pop cap
+make housing feature give pop cap\
+hunger mechanic
 
 # Event ideas
 goblin raid\
