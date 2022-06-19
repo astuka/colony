@@ -3,17 +3,14 @@ Simple terminal simulation game that simulates a fantasy colony
 
 # TODO
 add money feature/store function in colony\
-hunger mechanic
+hunger mechanic\
+expedition update: can choose to "send on expedition", get items but also chance of dying\
+leader update: one person assigned to be 'leader' at a time, for now given how high their charisma is 
 
 # Event ideas
 goblin raid\
-colonists go on expedition\
 evil alignment character causes betrayal\
-new colonist comes in\
-crafted building burns down
-
-# Other ideas
-A single person in the roster is elected "leader" at any given point
+new colonist comes in
 
 # Bugs
 Find better way of handing dict logic in level ups\

@@ -23,7 +23,7 @@ colony = { #initialize colony buildings
 #event logic
 def run_event(roster):
     #runs a set number of random events from the list
-    seed = r.randrange(0,6)
+    seed = r.randrange(0,8)
     
     #Check skill level, get wood
     if seed == 0:
@@ -95,6 +95,23 @@ def run_event(roster):
                 resources["Cooked Food"] += 1 * (1+colony["Fire Pits"])
                 x.exp += 10
                 print(x.firstname+" "+x.lastname+" has cooked some food.")
+    if seed == 7:
+        if colony["Fire Pits"] >= 1:
+            colony["Fire Pits"] -= 1
+            print("A fire pit has burned down!")
+        elif colony["Forges"] >= 1:
+            colony["Forges"] -= 1
+            print("A forge has burned down!")
+        elif colony["Houses"] >= 1:
+            colony["Houses"] -= 1
+            print("A house has burned down!")
+        elif colony["Mines"] >= 1:
+            colony["Mines"] -= 1
+            print("A mine has burned down!")
+        elif colony["Lumber Camps"] >= 1:
+            colony["Lumber Camps"] -= 1
+            print("A lumber camp has burned down!")
+
 
 def run_crafting(roster):
     #obtain crafter
